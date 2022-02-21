@@ -1,17 +1,35 @@
-name: dehasher # you probably want to 'snapcraft register <name>'
-base: core20 # the base snap is the execution environment for this snap
-version: '0.1' # just for humans, typically '1.2+git' or '1.3.2'
-summary: Single-line elevator pitch for your amazing snap # 79 char long summary
-description: |
-  This is my-snap's description. You have a paragraph or two to tell the
-  most important story about your snap. Keep it under 100 words though,
-  we live in tweetspace and your description wants to look good in the snap
-  store.
-
-grade: stable # must be 'stable' to release into candidate/stable channels
+name: dehasher
+version: '1.1'
+summary: This program dehashes my algorithm.
+description: I had nothing to do so I created this program.
+grade: stable # devel # must be 'stable' to release into candidate/stable channels
 confinement: strict # use 'strict' once you have the right plugs and slots
+base: core18
+
+apps:
+    dehasher:
+        command: python3 $SNAP/dehash.py
+        plugs: [home, gsettings, network]
 
 parts:
+  copy-stuff:
+    plugin: dump
+    source: .
   dehasher:
     plugin: python
-    source: https://github.com/jacobjuneau6/Dehasher.git
+    python-version: python3
+    source: .
+    stage-packages:
+        - libssl-dev
+        - libjpeg-dev
+        - libtiff-dev
+        - libsdl1.2-dev
+        - libnotify-dev
+        - freeglut3
+        - ibus-gtk3
+        - libwebkitgtk-3.0-0
+        - zlib1g
+        - libsm6
+        - libpulse0
+        - libslang2
+        - libsdl1.2debian
