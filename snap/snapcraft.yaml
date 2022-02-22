@@ -1,6 +1,6 @@
 name: dehasher
 version: '1.2'
-summary: This program dehashes my algorithm.
+summary: This program dehashes my algorithm. to run type "dehasher" in the terminal.
 description: I had nothing to do so I created this program.
 grade: stable # devel # must be 'stable' to release into candidate/stable channels
 confinement: strict # use 'strict' once you have the right plugs and slots
